@@ -18,27 +18,29 @@ function sendPostRequest(url, data, confirmCallback) { //Need to make sure posts
     $.postJSON(url, data, confirmCallback);
 }
 
+
 //Confirms need to be here
 function confirmLogin(response) {
     userId = response;
     if(userId<0){
         $('#warning').show();
     }else{
-        localStorage.setItem("userId",userId)
+        localStorage.setItem("userId",userId);
         window.location.href = "friendsAppMain.html";
     }
 }
 
 function loggingIn(){
     user = $('#username').val();
+    localStorage.setItem("username",user);
     pass = $('#password').val();    
     $('#warning').hide();
 
-    if(username || password ==""){
+    if(username & password == ""){
         $('#warning').show();
     }
     else{
-        var posting = { username:user, password:pass}
+        var posting = { username:user, password:pass};
         sendPostRequest("https://cmsc106.net/media/users/login", posting, confirmLogin);
     }
 }
