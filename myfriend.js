@@ -14,16 +14,18 @@ function sendPostRequest(url, data, confirmCallback) {
 }
 
 function handleSearchResponse(response) {
-    if (response && response.length > 0) {
-        var userProfile = response[0];
+    if (response) {
+        var userProfile = response;
 
         // display profile card using the data
         displayUserProfile(userProfile);
 
         $('#addFriend').data('userProfile', userProfile);
+
+        
     } else {
         // if not found user
-        $('#notfound').show();
+        $('div#notfound').show();
         $('#profileInfoCard').hide(); // hide user profile card 
     }
 }
@@ -34,7 +36,7 @@ function searchFriend(){
     var searchedUserName = $('#searchUsername').val();  // get username from input field
     
     if (searchedUserName.trim() === "") {
-        // if username is not put
+        // if username is not entered in text field
         $('#inputempty').show();
         $('#notfound').hide();
         $('#profileInfoCard').hide();
@@ -43,20 +45,16 @@ function searchFriend(){
     
     $('#inputempty').hide();
     
-    // create the data for the search
-    var requestData = {
-        username: searchedUserName
-    };
     
-    // send POST request and search username
-    sendPostRequest('https://cmsc106.net/media/profiles/search', requestData, handleSearchResponse);
+    // send GET request and search username
+    $.getJSON('https://cmsc106.net/media/profiles/'+ searchedUserName, handleSearchResponse);
 }
 
 function addFriend() {
     var userProfile = $('#addFriend').data('userProfile');
     if (userProfile) {
         // add user to the friend list
-        var friendListItem = $('<li class="list-group-item"></li>')
+        var friendListItem = $('<a href="#" class="list-group-item list-group-item-action"></a>')
             .text(userProfile.fullname)
             .data('userProfile', userProfile)  //  userProfile is stored in list item.
             .click(function() {  // add click event
@@ -72,15 +70,17 @@ function addFriend() {
 }
 
 function displayUserProfile(userProfile) {
+
     if (userProfile) {
         $('#name').text(userProfile.fullname);
-        $('#email').text(userProfile.email);
         $('#gender').text(userProfile.gender);
         $('#age').text(userProfile.age);
         $('#description').text(userProfile.bio);
         $('#profileInfoCard').show();
         $('#notfound').hide();
+        
     }
+    
 }
 
 
