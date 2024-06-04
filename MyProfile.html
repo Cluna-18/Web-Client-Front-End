@@ -17,13 +17,6 @@
                 <a class="nav-link text-white"  href="myFriends.html">My Friends</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="groups.html">Groups</a>
-              </li>
-             
-              <li class="nav-item">
-                <a class="nav-link text-white"  href="InterestTags.html">Interest Tags</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link text-white"  href="#"><strong>My Profile</strong></a>
               </li>
             </ul>
@@ -78,10 +71,6 @@
                                 </div>
                                 <br>
                                 <div class="form-inline">
-                                    <label for="email" class="col-form-label col-sm-3">Email:</label>
-                                    <h4><span id="email"></span></h4>
-                                </div>
-                                <div class="form-inline">
                                     <label for="gender" class="col-form-label col-sm-3">Gender:</label>
                                     <h4><span id="gender"></span></h4>
                                 </div>
@@ -95,48 +84,8 @@
                                     <br>
                                     <br>
                                 </div>
-                                <div class=" col-sm-6">
-                                    <button class="btn btn-primary" id="showQuiz">Change info</button>
-                                </div>
                             </div>
                             <hr>
-
-
-                            <div id="profileHidden">
-                            <div class="form-inline">
-                                <label for="name" class="col-form-label col-sm-3">Username:</label>
-                                <input type="text" class="form-control-inline" id="name" />
-                    
-                            </div>
-                            <br>
-                            <div class="form-inline">
-                                <label for="email" class="col-form-label col-sm-3">Email:</label>
-                                <input type="text" class="form-control-inline" id="email"/>
-                            </div>
-                            <div class="form-inline">
-                                <label for="gender" class="col-form-label col-sm-3">Gender:</label>
-                                <select class="form-control-inline" id="'gender">
-                                     <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Rather not say</option>
-                                </select>
-                            </div>
-                            <div class="form-inline">
-                                <label for="age" class="col-form-label col-sm-3">Age:</label>
-                                <input type="text" class="form-control-inline col-sm-1" id="age"/>
-                            </div>
-                            <div class="form-inline">
-                                <label for="description" class="col-form-label col-sm-8">Description (250 Character Limit):</label>
-                                <textarea class="form form-control-inline col-sm-12" rows="5" maxlength="200" id="description"></textarea>
-                                <br>
-                                <br>
-                                <div class=" col-sm-6">
-                                    <button class="btn btn-primary" id="showQuiz">Confirm Changes</button>
-                                </div>
-                                <hr>
-                            </div>
-                        </div>
-
                             <br>
                         </div>
                         </div>
@@ -152,7 +101,8 @@
 </div>
 
 <!-- Include Bootstrap JS (optional, only if you need JavaScript functionality) -->
-<script src="friendsApp.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="MyProfile.js"></script>
 
 <!-- Your custom JavaScript for dynamically adding rows to the table can be included here -->
 </body>
