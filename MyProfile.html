@@ -30,21 +30,21 @@
             <div class="col-sm-5 offset-sm-3">
                 <div class="card bg-light">
                     <div class="card-body">
-                        <h3 class="p-2"><span id="UsernameMain">Username</span></h3>
+                        <h4 class="p-2"><span id="UsernameMain"></span></h4 >
                        <hr>
                        <h4 class="d-flex justify-content-center">Following</h4>
-                       <h5 class="d-flex justify-content-center"><span id="numFollowing"></span>34</h5>
+                       <h5 class="d-flex justify-content-center"><span id="numFollowing"></span></h5>
                        <hr>
                        <h4 class="d-flex justify-content-center">Followers</h4>
-                        <h5 class="d-flex justify-content-center"><span id="numFollwers"></span>35</h5>
+                        <h5 class="d-flex justify-content-center"><span id="numFollowers"></span></h5>
                        <hr>
-                  
-
-
-
                     </div>
                 </div>
+                <div class=" col-sm-6 mt-5">
+                    <button class="btn btn-primary" id="ViewMyPosts">View My Posts</button>
+                </div>
             </div>
+            
         </div>
 
         <div class="col-4">
@@ -57,6 +57,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <div id="profileInfo">
                     <tr>
                         <td>
                     <!-- Rows will be dynamically added here -->
@@ -91,6 +92,9 @@
                         </div>
                     </td>
                     </tr>
+                </div>
+                <div id="posts">
+                </div>
                 
                 </tbody>
             </table>
