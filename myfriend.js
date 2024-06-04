@@ -1,5 +1,6 @@
 var userId;
 var username;
+var searchedUserName
 
 
 jQuery["postJSON"] = function(url,data,callback) {
@@ -13,8 +14,13 @@ jQuery["postJSON"] = function(url,data,callback) {
 	});
 };
 
+
 function sendPostRequest(url, data, confirmCallback) { 
-    $.postJSON(url, data, confirmCallback);
+    if (typeof confirmCallback === 'function') {
+        $.postJSON(url, data, confirmCallback);
+    } else {
+        $.postJSON(url, data);
+    }
 }
 
 function handleSearchResponse(response) {
@@ -25,6 +31,14 @@ function handleSearchResponse(response) {
         displayUserProfile(userProfile);
 
         $('#addFriend').data('userProfile', userProfile);
+
+        if (userProfile.followerids && userProfile.followerids.includes(userId)) {
+            $('#unfollowUser').show();
+            $('#followUser').hide();
+        } else {
+            $('#followUser').show();
+            $('#unfollowUser').hide();
+        }
 
         
     } else {
@@ -37,7 +51,7 @@ function handleSearchResponse(response) {
 
 
 function searchFriend(){
-    var searchedUserName = $('#searchUsername').val();  // get username from input field
+    searchedUserName = $('#searchUsername').val();  // get username from input field
     
     if (searchedUserName.trim() === "") {
         // if username is not entered in text field
@@ -52,6 +66,7 @@ function searchFriend(){
     
     // send GET request and search username
     $.getJSON('http://cmsc106.net/media/profiles/'+ searchedUserName, handleSearchResponse);
+    
 }
 
 function addFriend() {
@@ -71,6 +86,24 @@ function addFriend() {
         // execute request to the server for renewal if necessary 
         // 例: sendPostRequest('/addFriend', { userid: userProfile.userid }, callbackFunction);
     }
+}
+
+function confirmFollow(){
+
+}
+
+function followUser(){
+    var follow = { followerid:userId, username:searchedUserName};
+    sendPostRequest('https://cmsc106.net/media/profiles/follow/', follow);
+    $('#followUser').hide();
+    $('#unfollowUser').show();
+}
+
+function unfollowUser(){
+    var unfollow = { followerid:userId, username:searchedUserName};
+    sendPostRequest('https://cmsc106.net/media/profiles/unfollow/', unfollow);
+    $('#unfollowUser').hide();
+    $('#followUser').show();
 }
 
 function displayUserProfile(userProfile) {
@@ -108,10 +141,14 @@ function setup(){
 
     $('#searchFriend').click(searchFriend);
     $('#addFriend').click(addFriend);
+    $('#followUser').click(followUser);
+    $('#unfollowUser').click(unfollowUser);
+    $('#unfollowUser').hide();
     $('div#notfound').hide();
     $('div#inputempty').hide();
-    $('#profileInfoCard').hide();
+    $('#profileInfoCard').show();
 }
     
     
     $(document).ready(setup);
+    
