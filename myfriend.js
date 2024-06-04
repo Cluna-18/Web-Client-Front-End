@@ -88,20 +88,24 @@ function addFriend() {
     }
 }
 
-function confirmFollow(){
-
+function confirmFollow(response) {
+    console.log('Follow response:', response);
 }
 
 function followUser(){
-    var follow = { followerid:userId, username:searchedUserName};
-    sendPostRequest('https://cmsc106.net/media/profiles/follow/', follow);
+    var follow = { followerid: userId, username: searchedUserName };
+    sendPostRequest('https://cmsc106.net/media/profiles/follow/', follow, confirmFollow);
     $('#followUser').hide();
     $('#unfollowUser').show();
 }
 
+function confirmUnfollow(response) {
+    console.log('Unfollow response:', response);
+}
+
 function unfollowUser(){
-    var unfollow = { followerid:userId, username:searchedUserName};
-    sendPostRequest('https://cmsc106.net/media/profiles/unfollow/', unfollow);
+    var unfollow = { followerid: userId, username: searchedUserName };
+    sendPostRequest('https://cmsc106.net/media/profiles/unfollow/', unfollow, confirmUnfollow);
     $('#unfollowUser').hide();
     $('#followUser').show();
 }
@@ -146,7 +150,7 @@ function setup(){
     $('#unfollowUser').hide();
     $('div#notfound').hide();
     $('div#inputempty').hide();
-    $('#profileInfoCard').show();
+    $('#profileInfoCard').hide();
 }
     
     
