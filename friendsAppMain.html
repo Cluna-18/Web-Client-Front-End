@@ -17,12 +17,6 @@
                 <a class="nav-link text-white" href="myFriends.html">My Friends</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-white" href="groups.html">Groups</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link text-white" href="InterestTags.html">Interest Tags</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link text-white" href="MyProfile.html">My Profile</a>
               </li>
             </ul>
@@ -37,58 +31,101 @@
             <div class="col-sm-5 offset-sm-3">
                 <div class="card bg-light">
                     <div class="card-body">
-                        <h3 class="p-2"><span id="UsernameMain">Username</span></h3>
+                        <h4 class="p-2"><span id="UsernameMain"></span></h4>
                        <hr>
                        <h4 class="d-flex justify-content-center">Following</h4>
-                       <h5 class="d-flex justify-content-center"><span id="numFollowing"></span>34</h5>
+                       <h5 class="d-flex justify-content-center"><span id="numFollowing"></span></h5>
                        <hr>
                        <h4 class="d-flex justify-content-center">Followers</h4>
-                        <h5 class="d-flex justify-content-center"><span id="numFollwers"></span>35</h5>
+                        <h5 class="d-flex justify-content-center"><span id="numFollowers"></span></h5>
                        <hr>
-                  
-
-
-
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="col-4">
+           
+
+
+
             <!-- Second Column Content -->
             <table class="table" id="postsTable">
                 <thead>
                     <tr>
                         <th>Activity Feed</th>
-                        
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                    <!-- Rows will be dynamically added here -->
-                    <div class="col-sm-12">
+                    <tr><td><div class="col-sm-12">
                         <div class="card bg-light mb-4 mt-4">
                             <div class="card-body p-4">
-                                <h4>This card does in fact work and it will keep going down and down. So we can leave this here and then the feed will keep going down.This card does in fact work and it will keep going down and down. So we can leave this here and then the feed will keep going down.This card does in fact work and it will keep going down and down. So we can leave this here and then the feed will keep going down.This card does in fact work and it will keep going down and down. So we can leave this here and then the feed will keep going down. </h4>
+                                <div class="form-inline">
+                                    <label for="description" class="col-form-label col-sm-8" placeholder="Type Something!"><h3><strong>Make a post:</strong></h3></label>
+                                    <textarea class="form form-control-inline col-sm-12" rows="2" maxlength="200" id="description"></textarea>
+                                    <br>
+                                    <br>
+                                    <div class=" col-sm-6">
+                                        <button class="btn btn-primary" id="post">Post</button>
+                                    </div>
+                                    <hr>
+                                </div>                  
+                              </div>
+                        </div>  
+                    </div></td></tr>
+
+
+                        <tr>
+                        <td>
+                    <!-- Rows will be dynamically added here -->
+                    <div id="posts"></div>
+                    <div class="col-sm-12">
+                        <div class="card bg-light mb-1 mt-1">
+
+                            <div class="card-body p-2">
+
+                                <div class="col sm-10">
+
+                                    <div class="card bg-secondary">
+                                        <div class="card-body p-2">
+                                            <h1><span id="poster">Poster</span>
+                                                <button class="btn btn-primary mx-3" id="goToAccount">Go to Account</button>
+                                            </h1>
+                                            <hr>
+                                            <br>
+                                            <h3><span id = "body"></span>String</h3>
+                                            <br>
+                                            <hr>
+                                            <h5>Likes: 0 <span id="numLikes"></span>    Dislikes: 0 <span id="numDislikes"></span>   Comments: 0 <span id="numComments"></span></h5>
+                                            <hr>
+                                            <br>
+                                            <div class="d-flex justify-content-center">
+                                                <button class="btn btn-primary mx-3" id="Like">Like</button>
+                                                <button class="btn btn-primary mx-3" id="Dislike">Dislike</button>
+                                                <button class="btn btn-primary mx-3" id="Comment">Comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="card bg-light">
+                                        <div class="card-body p-2">
+                                            
+                                        </div>
+                                    </div>
+
+
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+
+                        
                         </div>
                     </td>
                     </tr>
 
-                    <tr>
-                        <td>
-                    <!-- Rows will be dynamically added here -->
-                    <div class="col-sm-12">
-                        <div class="card bg-light mb-4 mt-4">
-                            <div class="card-body p-4">
-                                <h4>This card does in fact work and it will keep going down and down. So we can leave this here and then the feed will keep going down. </h4>
-                            </div>
-                        </div>
-                        </div>
-                    </td>
-                    </tr>
 
                 </tbody>
             </table>
@@ -99,7 +136,7 @@
 
 <!-- Include Bootstrap JS (optional, only if you need JavaScript functionality) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="friendsApp.js"></script>
+<script src="friendsAppMain.js"></script>
 
 
 <!-- Your custom JavaScript for dynamically adding rows to the table can be included here -->
