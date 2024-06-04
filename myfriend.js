@@ -1,3 +1,7 @@
+var userId;
+var username;
+
+
 jQuery["postJSON"] = function(url,data,callback) {
 	$.ajax({
 	  url:url,
@@ -25,7 +29,7 @@ function handleSearchResponse(response) {
         
     } else {
         // if not found user
-        $('div#notfound').show();
+        $('#notfound').show();
         $('#profileInfoCard').hide(); // hide user profile card 
     }
 }
@@ -47,7 +51,7 @@ function searchFriend(){
     
     
     // send GET request and search username
-    $.getJSON('https://cmsc106.net/media/profiles/'+ searchedUserName, handleSearchResponse);
+    $.getJSON('http://cmsc106.net/media/profiles/'+ searchedUserName, handleSearchResponse);
 }
 
 function addFriend() {
@@ -83,16 +87,31 @@ function displayUserProfile(userProfile) {
     
 }
 
+function getFollows(data) {
+    var numFollowing = data.followingids ? data.followingids.length : 0;
+    $('#numFollowing').text(numFollowing);
+
+    var numFollowers = data.followerids ? data.followerids.length : 0;
+    $('#numFollowers').text(numFollowers);
+}
+
 
 function setup(){
+
+    userId = localStorage.getItem("userId");
+    username = localStorage.getItem("username");
+    
+
+    $('#UsernameMain').text(username);
+    $.getJSON("http://cmsc106.net/media/profiles/" + username ,getFollows);
+    
+
     $('#searchFriend').click(searchFriend);
     $('#addFriend').click(addFriend);
     $('div#notfound').hide();
     $('div#inputempty').hide();
     $('#profileInfoCard').hide();
-    
-    }
+}
     
     
     $(document).ready(setup);
-    
